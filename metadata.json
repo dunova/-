@@ -1,0 +1,5 @@
+{
+  "name": "Sentinel - Crypto & Macro Intelligence",
+  "description": "A professional-grade intelligence dashboard analyzing crypto markets and global macro conditions using Gemini 2.5 Flash with search grounding.",
+  "requestFramePermissions": []
+}
