@@ -1,16 +1,45 @@
-export interface CoinData {
-  id: string;
-  symbol: string;
-  name: string;
-  current_price: number;
-  price_change_percentage_24h: number;
-  total_volume: number;
-  high_24h: number;
-  low_24h: number;
-  sparkline_in_7d: {
-    price: number[];
-  };
-  isIndex?: boolean; // To distinguish stock indices from crypto
+export interface ForecastDay {
+  date: string;
+  tMinus3: number;
+  tMinus2: number;
+  tMinus1: number;
+  actual: number;
+}
+
+export interface HorizonSummary {
+  id: 'T-3' | 'T-2' | 'T-1';
+  exactHitRate: number;
+  meanAbsoluteError: number;
+  sampleSize: number;
+}
+
+export interface AccuracyPoint {
+  horizon: 'T-3' | 'T-2' | 'T-1';
+  accuracy: number;
+}
+
+export interface FlipRateSummary {
+  t3HoldRate: number;
+  t3HoldSample: number;
+  t3To11Actual10Rate: number;
+  t3To11Sample: number;
+}
+
+export interface ProfitDecayRow {
+  label: string;
+  t3Price: number;
+  t1AveragePrice: number;
+  sampleSize: number;
+}
+
+export interface ForecastAnalysisData {
+  station: string;
+  seasonLabel: string;
+  days: ForecastDay[];
+  horizonSummaries: HorizonSummary[];
+  accuracyTrend: AccuracyPoint[];
+  flipRates: FlipRateSummary;
+  profitDecay: ProfitDecayRow;
 }
 
 export enum AnalysisStatus {
